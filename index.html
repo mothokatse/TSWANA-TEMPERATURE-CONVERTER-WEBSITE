@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tswana Temperature Converter</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url('https://media.istockphoto.com/id/1446717248/photo/amman-jordan.jpg?s=612x612&w=0&k=20&c=MnQYwQRr_J5r436eWe8HYA365b0R2Gsrn_XLKCtHKPg=');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container {
+        max-width: 400px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Tswana Temperature Converter</h2>
+    <label for="temperature">Enter Temperature:</label>
+    <input type="text" id="temperature">
+    <select id="unit">
+        <option value="celsius">Celsius</option>
+        <option value="fahrenheit">Fahrenheit</option>
+        <option value="kelvin">Kelvin</option>
+    </select>
+    <button onclick="convertTemperature()">Convert</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    function convertTemperature() {
+        var temperature = parseFloat(document.getElementById("temperature").value);
+        var unit = document.getElementById("unit").value;
+        var result;
+        
+        if (isNaN(temperature)) {
+            document.getElementById("result").innerText = "Please enter a valid number.";
+            return;
+        }
+        
+        if (unit === "celsius") {
+            result = temperature + "°C = " + (temperature * 9/5 + 32) + "°F = " + (temperature + 273.15) + "K";
+        } else if (unit === "fahrenheit") {
+            result = temperature + "°F = " + ((temperature - 32) * 5/9) + "°C = " + ((temperature - 32) * 5/9 + 273.15) + "K";
+        } else if (unit === "kelvin") {
+            result = temperature + "K = " + (temperature - 273.15) + "°C = " + ((temperature - 273.15) * 9/5 + 32) + "°F";
+        }
+        
+        document.getElementById("result").innerText = result;
+    }
+</script>
+
+</body>
+</html>
